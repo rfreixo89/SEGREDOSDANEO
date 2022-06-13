@@ -1,0 +1,20 @@
+{
+	"name": "ds_lista_titanic",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LKS_ADLS_",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "Cemiterio",
+				"fileSystem": "blackhole"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

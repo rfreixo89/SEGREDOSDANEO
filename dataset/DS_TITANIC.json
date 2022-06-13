@@ -1,0 +1,68 @@
+{
+	"name": "DS_TITANIC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LKS_ADLS_",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "test.csv",
+				"fileSystem": "bruninho"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PassengerId",
+				"type": "String"
+			},
+			{
+				"name": "Pclass",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Sex",
+				"type": "String"
+			},
+			{
+				"name": "Age",
+				"type": "String"
+			},
+			{
+				"name": "SibSp",
+				"type": "String"
+			},
+			{
+				"name": "Parch",
+				"type": "String"
+			},
+			{
+				"name": "Ticket",
+				"type": "String"
+			},
+			{
+				"name": "Fare",
+				"type": "String"
+			},
+			{
+				"name": "Cabin",
+				"type": "String"
+			},
+			{
+				"name": "Embarked",
+				"type": "String"
+			}
+		]
+	}
+}

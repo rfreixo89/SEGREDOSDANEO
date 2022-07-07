@@ -1,28 +1,12 @@
-name: workspace deployment
-
-on:
-    push:
-        branches: [ publish_branch ]
+name: learn-github-actions
+on: [push]
 jobs:
-    release:
-        # You also can use the self-hosted runners.
-        runs-on: windows-latest
-        steps:
-        # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it.
-        - uses: actions/checkout@v2
-        - uses: azure/synapse-workspace-deployment@release-1.0
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          TargetWorkspaceName: 'target workspace name'
-          TemplateFile: './path of the TemplateForWorkspace.json'
-          ParametersFile: './path of the TemplateParametersForWorkspace.json'
-          OverrideArmParameters: './path of the parameters.yaml'
-          environment: 'Azure Public'
-          resourceGroup: 'target workspace resource group'
-          clientId: ${{secrets.CLIENTID}}
-          clientSecret:  ${{secrets.CLIENTSECRET}}
-          subscriptionId: 'subscriptionId of the target workspace'
-          tenantId: 'tenantId'
-          DeleteArtifactsNotInTemplate: 'true'
-          managedIdentity: 'False'
-
-
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v

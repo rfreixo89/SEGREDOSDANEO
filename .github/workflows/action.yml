@@ -10,15 +10,15 @@ jobs:
       - uses: actions/checkout@v3
       - uses: Azure/Synapse-workspace-deployment@V1.6.0
         with:
-          TargetWorkspaceName: 'target workspace name'
+          TargetWorkspaceName: 'neosynapseprd'
           TemplateFile: './path of the TemplateForWorkspace.json'
           ParametersFile: './path of the TemplateParametersForWorkspace.json'
           OverrideArmParameters: './path of the parameters.yaml'
           environment: 'Azure Public'
-          resourceGroup: 'target workspace resource group'
+          resourceGroup: 'SYNAPSEPRD'
           clientId: ${{secrets.CLIENTID}}
           clientSecret:  ${{secrets.CLIENTSECRET}}
-          subscriptionId: 'subscriptionId of the target workspace'
+          subscriptionId: '883d3114-8850-4a02-998b-d9c7f5618db5'
           tenantId: 'tenantId'
           DeleteArtifactsNotInTemplate: 'true'
           managedIdentity: 'False'

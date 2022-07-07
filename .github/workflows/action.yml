@@ -1,12 +1,25 @@
-name: learn-github-actions
-on: [push]
+name: workspace deployment
+
+on:
+    push:
+        branches: [ publish_branch ]
 jobs:
-  check-bats-version:
-    runs-on: ubuntu-latest
+  release:  
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: Azure/Synapse-workspace-deployment@V1.6.0
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          TargetWorkspaceName: 'target workspace name'
+          TemplateFile: './path of the TemplateForWorkspace.json'
+          ParametersFile: './path of the TemplateParametersForWorkspace.json'
+          OverrideArmParameters: './path of the parameters.yaml'
+          environment: 'Azure Public'
+          resourceGroup: 'target workspace resource group'
+          clientId: ${{secrets.CLIENTID}}
+          clientSecret:  ${{secrets.CLIENTSECRET}}
+          subscriptionId: 'subscriptionId of the target workspace'
+          tenantId: 'tenantId'
+          DeleteArtifactsNotInTemplate: 'true'
+          managedIdentity: 'False'
+ 
